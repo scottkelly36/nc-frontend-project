@@ -29,15 +29,15 @@ console.log(review)
     <section className='review-container'>
         <img src={review.review_img_url} className="review-img" alt="" />
         <div className="review-info-container">
-            <p className="category">{review.category}</p>
-            <p className="review-designer">{review.designer}</p>
-            <p className="review-author">{review.owner}</p>
+            <p className="review-category">{review.category}</p>
+            <p className="review-designer">Designed by {review.designer}</p>
+            <p className="review-author">Review by {review.owner}</p>
             <p className="review-body">{review.review_body}</p>
             <div className="vote-btns">
-                <button className='btn btn-primary'>+</button>
+                <button className='btn btn-feature'>+</button>
                 <button className='btn btn-danger'>-</button>
-                <p className="votes">{review.votes}</p>
             </div>
+            <p className="votes">{review.votes}</p>
         </div>
         
     </section> 
