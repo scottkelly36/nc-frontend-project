@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect} from 'react';
 import './Filter.css';
 
 const Filter = ({
@@ -7,6 +7,8 @@ const Filter = ({
 	setAllCategories,
 	allCategories,
 }) => {
+
+	
 	useEffect(() => {
 		axios
 			.get(

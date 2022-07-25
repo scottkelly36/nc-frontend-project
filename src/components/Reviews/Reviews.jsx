@@ -1,20 +1,23 @@
 import { Fragment, useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Reviews.css';
 import Filter from '../Filter/Filter';
+import Loading from '../Loading/Loading';
 
 const Reviews = () => {
+	
+	const { category } = useParams();
+	const navigate = useNavigate();
+
 	const [isLoading, setLoading] = useState(true);
 	const [allReviews, setAllReviews] = useState([]);
-	const [selectedCategory, setCategory] = useState('');
+	const [selectedCategory, setCategory] = useState(category);
 	const [allCategories, setAllCategories] = useState([]);
 
-	const { params } = useParams();
-	const pa = new URLSearchParams();
-
-	console.log(pa);
-
+	
+	
+	
 	useEffect(() => {
 		axios
 			.get(
@@ -27,11 +30,15 @@ const Reviews = () => {
 			)
 			.then((res) => {
 				setAllReviews(res.data.reviews);
+				if(selectedCategory){
+					navigate(`/reviews/${selectedCategory}`);
+				}
 				setLoading(false);
 			});
-	}, [selectedCategory]);
-	console.log(selectedCategory);
+	}, [selectedCategory, navigate]);
+
 	return (
+		isLoading? <Loading/> : 
 		<Fragment>
 			<Filter
 				setCategory={setCategory}
