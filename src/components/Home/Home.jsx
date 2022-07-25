@@ -16,7 +16,7 @@ const Home = () => {
 				setAllReviews(res.data.reviews);
 				setLoading(false);
 			});
-	});
+	},[]);
 	console.log(allReviews);
 	return (
 		<Fragment>
@@ -58,7 +58,7 @@ const Home = () => {
 								</div>
 								<p className='card-body'>
 									{review.review_body.substring(0, 50)} ...
-									<Link to={`/${review.review_id}`}>
+									<Link to={`/reviews/${review.review_id}`}>
 										{' '}
 										See more
 									</Link>
