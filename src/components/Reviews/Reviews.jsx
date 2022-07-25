@@ -11,7 +11,9 @@ const Reviews = () => {
 	const [allCategories, setAllCategories] = useState([]);
 
 	const { params } = useParams();
-	console.log(params);
+	const pa = new URLSearchParams();
+
+	console.log(pa);
 
 	useEffect(() => {
 		axios
