@@ -12,4 +12,5 @@ nav {
 .nav-link {
 	color: whitesmoke;
 	text-decoration: none;
+	margin-right: 30px;
 }

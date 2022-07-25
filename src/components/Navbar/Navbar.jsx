@@ -18,6 +18,14 @@ const Navbar = () => {
 				>
 					Home
 				</NavLink>
+				<NavLink
+					to='/reviews'
+					className={(isActive) =>
+						'nav-link' + (!isActive ? 'unselected' : '')
+					}
+				>
+					Reviews
+				</NavLink>
 			</div>
 		</nav>
 	);

@@ -1,0 +1,24 @@
+.filter-container {
+	position: fixed;
+	margin-top: 50px;
+	background-color: rgb(14, 126, 136);
+	width: 100vw;
+	height: 30px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+.category-select {
+	background-color: rgb(14, 126, 136);
+	color: whitesmoke;
+	border: none;
+}
+
+.category-select:active {
+	background-color: whitesmoke;
+	color: rgb(14, 126, 136);
+}
+.category-select:hover {
+	background-color: whitesmoke;
+	color: rgb(14, 126, 136);
+}
