@@ -1,0 +1,15 @@
+nav {
+	background-color: rgb(33, 72, 97);
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 30px;
+	position: fixed;
+	width: 100vw;
+}
+
+.nav-link {
+	color: whitesmoke;
+	text-decoration: none;
+}

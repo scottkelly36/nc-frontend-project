@@ -1,10 +1,24 @@
 import React from 'react';
-import { Navlink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import './Navbar.css';
+import Logo from '../../images/favicon-32x32.png';
 
 const Navbar = () => {
 	return (
 		<nav>
-			<Navlink></Navlink>
+			<div className='logo'>
+				<img src={Logo} alt='' />
+			</div>
+			<div className='links'>
+				<NavLink
+					to='/'
+					className={(isActive) =>
+						'nav-link' + (!isActive ? 'unselected' : '')
+					}
+				>
+					Home
+				</NavLink>
+			</div>
 		</nav>
 	);
 };
