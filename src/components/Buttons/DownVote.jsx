@@ -5,6 +5,8 @@ const DownVote = ({
 	allReviews,
 	setAllReviews,
 	setReview,
+	setLikes,
+	likes
 }) => {
 	const Down = () => {
 		axios
@@ -26,6 +28,9 @@ const DownVote = ({
 							})
 					  )
 					: setReview(res.data.review);
+					setLikes([...likes].filter((id)=>{
+						return id !== review_id
+					}))
 			})
 			.catch((err) => {
 				console.log(err);

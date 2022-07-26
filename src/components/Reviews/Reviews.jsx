@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from 'react';
+import { Fragment, useState, useEffect, useContext } from 'react';
 import {
 	Link,
 	useParams,
@@ -10,10 +10,12 @@ import Filter from '../Filter/Filter';
 import Loading from '../Loading/Loading';
 import DownVote from '../Buttons/DownVote';
 import UpVote from '../Buttons/UpVote';
+import {LikeTrackerContext} from '../../Context/LikeTracker.jsx'
 
 const Reviews = () => {
 	const { category } = useParams();
 	const navigate = useNavigate();
+	const {likes, setLikes} = useContext(LikeTrackerContext);
 
 	const [isLoading, setLoading] = useState(true);
 	const [allReviews, setAllReviews] = useState([]);
@@ -79,16 +81,21 @@ const Reviews = () => {
 									className='review-card-img'
 								/>
 								<div className='vote-btns'>
+									{!likes.includes(review.review_id)?
 									<UpVote
 										review_id={review.review_id}
 										allReviews={allReviews}
 										setAllReviews={setAllReviews}
-									/>
+										setLikes = {setLikes}
+										likes = {likes}
+									/> : 
 									<DownVote
 										review_id={review.review_id}
 										allReviews={allReviews}
 										setAllReviews={setAllReviews}
-									/>
+										setLikes = {setLikes}
+										likes = {likes}
+									/>}
 								</div>
 
 								<p className='total-votes'>

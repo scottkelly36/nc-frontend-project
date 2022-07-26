@@ -5,6 +5,8 @@ const UpVote = ({
 	allReviews,
 	setAllReviews,
 	setReview,
+    setLikes,
+    likes
 }) => {
 	const Up = () => {
 		axios
@@ -26,6 +28,8 @@ const UpVote = ({
 							})
 					  )
 					: setReview(res.data.review);
+
+                    setLikes([...likes, review_id])
 			})
 			.catch((err) => {
 				console.log(err);

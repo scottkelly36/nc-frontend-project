@@ -1,15 +1,17 @@
-import { Fragment, useState, useEffect } from 'react';
+import { Fragment, useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import Loading from '../Loading/Loading.jsx';
 import axios from 'axios';
 import './Review.css';
 import DownVote from '../Buttons/DownVote';
 import UpVote from '../Buttons/UpVote';
+import {LikeTrackerContext} from '../../Context/LikeTracker.jsx'
 
 const Review = () => {
 	const { review_id } = useParams();
 	const [review, setReview] = useState({});
 	const [isLoading, setLoading] = useState(true);
+	const {likes, setLikes} = useContext(LikeTrackerContext);
 
 	useEffect(() => {
 		axios
@@ -49,16 +51,21 @@ const Review = () => {
 						{review.review_body}
 					</p>
 					<div className='vote-btns'>
+						{!likes.includes(review.review_id)?
 						<UpVote
 							review_id={review.review_id}
 							review={review}
 							setReview={setReview}
-						/>
+							setLikes = {setLikes}
+							likes = {likes}
+						/>:
 						<DownVote
 							review_id={review.review_id}
 							review={review}
 							setReview={setReview}
-						/>
+							setLikes = {setLikes}
+							likes = {likes}
+						/>}
 					</div>
 					<p className='votes'>{review.votes}</p>
 				</div>
