@@ -1,3 +1,4 @@
+
 import {useEffect, useState} from 'react';
 import './Comments.css';
 import axios from 'axios';
@@ -36,3 +37,4 @@ const Comments = ({review_id}) => {
 }
 
 export default Comments
+
