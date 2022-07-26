@@ -1,23 +1,24 @@
 import { Fragment, useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import {
+	Link,
+	useParams,
+	useNavigate,
+} from 'react-router-dom';
 import axios from 'axios';
 import './Reviews.css';
 import Filter from '../Filter/Filter';
 import Loading from '../Loading/Loading';
 
 const Reviews = () => {
-	
 	const { category } = useParams();
 	const navigate = useNavigate();
 
 	const [isLoading, setLoading] = useState(true);
 	const [allReviews, setAllReviews] = useState([]);
-	const [selectedCategory, setCategory] = useState(category);
+	const [selectedCategory, setCategory] =
+		useState(category);
 	const [allCategories, setAllCategories] = useState([]);
 
-	
-	
-	
 	useEffect(() => {
 		axios
 			.get(
@@ -30,15 +31,16 @@ const Reviews = () => {
 			)
 			.then((res) => {
 				setAllReviews(res.data.reviews);
-				if(selectedCategory){
+				if (selectedCategory) {
 					navigate(`/reviews/${selectedCategory}`);
 				}
 				setLoading(false);
 			});
 	}, [selectedCategory, navigate]);
 
-	return (
-		isLoading? <Loading/> : 
+	return isLoading ? (
+		<Loading />
+	) : (
 		<Fragment>
 			<Filter
 				setCategory={setCategory}
@@ -99,7 +101,7 @@ const Reviews = () => {
 								</div>
 								<p className='card-body'>
 									{review.review_body.substring(0, 50)} ...
-									<Link to={`/${review.review_id}`}>
+									<Link to={`/review/${review.review_id}`}>
 										{' '}
 										See more
 									</Link>

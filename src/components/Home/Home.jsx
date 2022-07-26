@@ -1,11 +1,15 @@
-import React from 'react';
-import './Home.css'
+import { Fragment } from 'react';
+
+import './Home.css';
 
 const Home = () => {
-	return <section className="container">
-		<h1 className="home-heading">
-			Welcome to NC Games
-		</h1></section>;
+	return (
+		<Fragment>
+			<section className='container'>
+				<h1>Welcome to NC Games</h1>
+			</section>
+		</Fragment>
+	);
 };
 
 export default Home;
