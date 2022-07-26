@@ -1,9 +1,17 @@
-import React from 'react'
+import LoadingBar from '../../images/loading-bar.gif';
+import './Loading.css';
 
 const Loading = () => {
-  return (
-    <div>Loading</div>
-  )
-}
+	return (
+		<section className='loading-container'>
+			<h4 className='loading-text'>Loading</h4>
+			<img
+				src={LoadingBar}
+				alt=''
+				className='loading-gif'
+			/>
+		</section>
+	);
+};
 
-export default Loading
+export default Loading;
