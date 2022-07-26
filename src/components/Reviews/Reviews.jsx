@@ -79,12 +79,16 @@ const Reviews = () => {
 									className='review-card-img'
 								/>
 								<div className='vote-btns'>
-									<button className='btn btn-feature'>
-										+
-									</button>
-									<button className='btn btn-danger'>
-										-
-									</button>
+									<UpVote
+										review_id={review.review_id}
+										allReviews={allReviews}
+										setAllReviews={setAllReviews}
+									/>
+									<DownVote
+										review_id={review.review_id}
+										allReviews={allReviews}
+										setAllReviews={setAllReviews}
+									/>
 								</div>
 
 								<p className='total-votes'>

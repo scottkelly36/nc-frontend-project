@@ -8,7 +8,7 @@ import UpVote from '../Buttons/UpVote';
 
 const Review = () => {
 	const { review_id } = useParams();
-	const [review, setReview] = useState([]);
+	const [review, setReview] = useState({});
 	const [isLoading, setLoading] = useState(true);
 
 	useEffect(() => {
@@ -49,8 +49,16 @@ const Review = () => {
 						{review.review_body}
 					</p>
 					<div className='vote-btns'>
-						<button className='btn btn-feature'>+</button>
-						<button className='btn btn-danger'>-</button>
+						<UpVote
+							review_id={review.review_id}
+							review={review}
+							setReview={setReview}
+						/>
+						<DownVote
+							review_id={review.review_id}
+							review={review}
+							setReview={setReview}
+						/>
 					</div>
 					<p className='votes'>{review.votes}</p>
 				</div>
