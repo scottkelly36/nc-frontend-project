@@ -1,8 +1,10 @@
 import { Fragment, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Loading from '../Loading/Loading.jsx';
+import Comments from '../Comments/Comments.jsx';
 import axios from 'axios';
 import './Review.css';
+
 
 const Review = () => {
 	const { review_id } = useParams();
@@ -53,6 +55,7 @@ const Review = () => {
 					<p className='votes'>{review.votes}</p>
 				</div>
 			</section>
+			<Comments review_id={review_id}/>
 		</Fragment>
 	);
 };
