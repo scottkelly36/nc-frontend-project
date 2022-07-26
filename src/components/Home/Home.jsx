@@ -2,6 +2,8 @@ import { Fragment, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Home.css';
+import DownVote from '../Buttons/DownVote';
+import UpVote from '../Buttons/UpVote';
 
 const Home = () => {
 	const [isLoading, setLoading] = useState(true);
@@ -16,8 +18,8 @@ const Home = () => {
 				setAllReviews(res.data.reviews);
 				setLoading(false);
 			});
-	});
-	console.log(allReviews);
+	},[]);
+	
 	return (
 		<Fragment>
 			<header className='home-header'>
@@ -34,12 +36,8 @@ const Home = () => {
 									className='review-card-img'
 								/>
 								<div className='vote-btns'>
-									<button className='btn btn-feature'>
-										+
-									</button>
-									<button className='btn btn-danger'>
-										-
-									</button>
+									<UpVote review_id={review.review_id} allReviews={allReviews} setAllReviews={setAllReviews}/>
+									<DownVote review_id={review.review_id} allReviews={allReviews} setAllReviews={setAllReviews}/>
 								</div>
 
 								<p className='total-votes'>
