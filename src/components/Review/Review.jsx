@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import Loading from '../Loading/Loading.jsx';
 import axios from 'axios';
 import './Review.css';
+import PostComment from '../PostComment/PostComment.jsx';
 
 const Review = () => {
 	const { review_id } = useParams();
@@ -53,7 +54,11 @@ const Review = () => {
 					<p className='votes'>{review.votes}</p>
 				</div>
 			</section>
+
+			<PostComment/>
 		</Fragment>
+
+
 	);
 };
 
