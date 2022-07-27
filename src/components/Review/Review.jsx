@@ -36,9 +36,9 @@ const Review = () => {
 		<Loading />
 	) : (
 		<Fragment>
-			<heading className='review-heading'>
-				<h1>{review.title}</h1>
-			</heading>
+			<div className='review-heading'>
+				<h1 className='review-title'>{review.title}</h1>
+			</div>
 			<section className='review-container'>
 				<img
 					src={review.review_img_url}
@@ -81,7 +81,7 @@ const Review = () => {
 				</div>
 			</section>
 
-			<PostComment />
+			<PostComment review_id={review_id} />
 		</Fragment>
 	);
 };
