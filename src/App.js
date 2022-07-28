@@ -8,7 +8,6 @@ import {
 	BrowserRouter,
 	Routes,
 	Route,
-	Navigate,
 } from 'react-router-dom';
 import { LikeTrackerContext } from './Context/LikeTracker';
 import { DefaultUserContext } from './Context/DefaultUserContext';
