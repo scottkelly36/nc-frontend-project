@@ -3,6 +3,7 @@ import Reviews from './components/Reviews/Reviews.jsx';
 import Home from './components/Home/Home.jsx';
 import Navbar from './components/Navbar/Navbar.jsx';
 import Review from './components/Review/Review.jsx';
+import Error from './components/Errors/Error.jsx';
 import { useState } from 'react';
 import {
 	BrowserRouter,
@@ -47,6 +48,7 @@ function App() {
 								path='/reviews/:category'
 								element={<Reviews />}
 							/>
+							<Route path='*' element={<Error />} />
 						</Routes>
 					</BrowserRouter>
 				</DefaultUserContext.Provider>

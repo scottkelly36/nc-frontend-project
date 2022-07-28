@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState, useContext } from 'react';
 import './PostComment.css';
 import { DefaultUserContext } from '../../Context/DefaultUserContext';
+import Error from '../Errors/Error';
 
 const PostComment = ({
 	review_id,
@@ -13,6 +14,7 @@ const PostComment = ({
 	const [isSubmitted, setIsSubmitted] = useState(false);
 	const [body, setBody] = useState('');
 	const { user } = useContext(DefaultUserContext);
+	const [errorMessage, setErrorMessage] = useState('');
 
 	const submitComment = (event) => {
 		event.preventDefault();
@@ -27,7 +29,7 @@ const PostComment = ({
 			setError('');
 			axios
 				.post(
-					`https://scotts-game-app.herokuapp.com/api/reviews/${review_id}/comments`,
+					`https://scotts-game-app.herokuapp.com/api/reviews/${review_id}/commens`,
 					{
 						body: body,
 						username: user.username,
@@ -44,7 +46,8 @@ const PostComment = ({
 					removeMessage(setIsSubmitted);
 				})
 				.catch((err) => {
-					console.log(err);
+					setErrorMessage(err.response.data.msg);
+					setIsLoading(false);
 				});
 		}
 	};
@@ -60,7 +63,7 @@ const PostComment = ({
 		}, 5000);
 	};
 
-	return (
+	return !errorMessage ? (
 		<div className='form-container'>
 			{error ? (
 				<div className='error-message'>
@@ -94,6 +97,8 @@ const PostComment = ({
 				</button>
 			</form>
 		</div>
+	) : (
+		<Error />
 	);
 };
 
