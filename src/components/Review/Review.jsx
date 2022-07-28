@@ -12,7 +12,7 @@ import './Review.css';
 import DownVote from '../Buttons/DownVote';
 import UpVote from '../Buttons/UpVote';
 import { LikeTrackerContext } from '../../Context/LikeTracker.jsx';
-import { Comments } from '../Comments/Comments.jsx';
+import Comments from '../Comments/Comments.jsx';
 
 const Review = () => {
 	const { review_id } = useParams();
