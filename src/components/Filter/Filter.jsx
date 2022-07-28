@@ -1,14 +1,14 @@
 import axios from 'axios';
-import { useEffect} from 'react';
+import { useEffect } from 'react';
 import './Filter.css';
 
 const Filter = ({
 	setCategory,
 	setAllCategories,
 	allCategories,
+	setOrder,
+	setSort,
 }) => {
-
-	
 	useEffect(() => {
 		axios
 			.get(
@@ -43,6 +43,30 @@ const Filter = ({
 						</option>
 					);
 				})}
+			</select>
+			<select
+				name='order'
+				id='order'
+				className='category-select'
+				onChange={(e) => {
+					setOrder(e.target.value);
+				}}
+			>
+				<option value='asc' defaultChecked>
+					ASC
+				</option>
+				<option value='desc'>DESC</option>
+			</select>
+			<select
+				name='sort'
+				id='sort'
+				className='category-select'
+				onChange={(e) => {
+					setSort(e.target.value);
+				}}
+			>
+				<option value='created_at'>Date</option>
+				<option value='votes'>Votes</option>
 			</select>
 		</div>
 	);

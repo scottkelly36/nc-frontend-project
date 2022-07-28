@@ -1,4 +1,9 @@
-import { Fragment, useState, useEffect, useContext } from 'react';
+import {
+	Fragment,
+	useState,
+	useEffect,
+	useContext,
+} from 'react';
 import {
 	Link,
 	useParams,
@@ -10,18 +15,22 @@ import Filter from '../Filter/Filter';
 import Loading from '../Loading/Loading';
 import DownVote from '../Buttons/DownVote';
 import UpVote from '../Buttons/UpVote';
-import {LikeTrackerContext} from '../../Context/LikeTracker.jsx'
+import { LikeTrackerContext } from '../../Context/LikeTracker.jsx';
 
 const Reviews = () => {
 	const { category } = useParams();
 	const navigate = useNavigate();
-	const {likes, setLikes} = useContext(LikeTrackerContext);
+	const { likes, setLikes } = useContext(
+		LikeTrackerContext
+	);
 
 	const [isLoading, setLoading] = useState(true);
 	const [allReviews, setAllReviews] = useState([]);
 	const [selectedCategory, setCategory] =
 		useState(category);
 	const [allCategories, setAllCategories] = useState([]);
+	const [order, setOrder] = useState('ASC');
+	const [sort, setSort] = useState('created_at');
 
 	useEffect(() => {
 		axios
@@ -30,6 +39,8 @@ const Reviews = () => {
 				{
 					params: {
 						category: selectedCategory,
+						order: order,
+						sort_by: sort,
 					},
 				}
 			)
@@ -39,8 +50,11 @@ const Reviews = () => {
 					navigate(`/reviews/${selectedCategory}`);
 				}
 				setLoading(false);
+			})
+			.catch((err) => {
+				console.log(err);
 			});
-	}, [selectedCategory, navigate]);
+	}, [selectedCategory, navigate, order, sort]);
 
 	return isLoading ? (
 		<Loading />
@@ -50,6 +64,8 @@ const Reviews = () => {
 				setCategory={setCategory}
 				setAllCategories={setAllCategories}
 				allCategories={allCategories}
+				setOrder={setOrder}
+				setSort={setSort}
 			/>
 			<header className='home-header'>
 				<h1 className='review-header'>Reviews</h1>
@@ -81,21 +97,23 @@ const Reviews = () => {
 									className='review-card-img'
 								/>
 								<div className='vote-btns'>
-									{!likes.includes(review.review_id)?
-									<UpVote
-										review_id={review.review_id}
-										allReviews={allReviews}
-										setAllReviews={setAllReviews}
-										setLikes = {setLikes}
-										likes = {likes}
-									/> : 
-									<DownVote
-										review_id={review.review_id}
-										allReviews={allReviews}
-										setAllReviews={setAllReviews}
-										setLikes = {setLikes}
-										likes = {likes}
-									/>}
+									{!likes.includes(review.review_id) ? (
+										<UpVote
+											review_id={review.review_id}
+											allReviews={allReviews}
+											setAllReviews={setAllReviews}
+											setLikes={setLikes}
+											likes={likes}
+										/>
+									) : (
+										<DownVote
+											review_id={review.review_id}
+											allReviews={allReviews}
+											setAllReviews={setAllReviews}
+											setLikes={setLikes}
+											likes={likes}
+										/>
+									)}
 								</div>
 
 								<p className='total-votes'>
