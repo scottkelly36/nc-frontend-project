@@ -9,15 +9,18 @@ import { useParams } from 'react-router-dom';
 import Loading from '../Loading/Loading.jsx';
 import axios from 'axios';
 import './Review.css';
+
 import DownVote from '../Buttons/DownVote';
 import UpVote from '../Buttons/UpVote';
 import { LikeTrackerContext } from '../../Context/LikeTracker.jsx';
+
 import Comments from '../Comments/Comments.jsx';
 
 const Review = () => {
 	const { review_id } = useParams();
 	const [review, setReview] = useState({});
 	const [isLoading, setLoading] = useState(true);
+	const [allComments, setAllComments] = useState([]);
 
 	const { likes, setLikes } = useContext(
 		LikeTrackerContext
@@ -38,9 +41,9 @@ const Review = () => {
 		<Loading />
 	) : (
 		<Fragment>
-			<heading className='review-heading'>
-				<h1>{review.title}</h1>
-			</heading>
+			<div className='review-heading'>
+				<h1 className='review-title'>{review.title}</h1>
+			</div>
 			<section className='review-container'>
 				<img
 					src={review.review_img_url}
@@ -83,7 +86,11 @@ const Review = () => {
 				</div>
 			</section>
 
-			<Comments review_id={review_id} />
+			<Comments
+				review_id={review_id}
+				setAllComments={setAllComments}
+				allComments={allComments}
+			/>
 		</Fragment>
 	);
 };

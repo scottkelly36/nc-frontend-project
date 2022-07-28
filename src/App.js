@@ -8,35 +8,48 @@ import {
 	BrowserRouter,
 	Routes,
 	Route,
-	Navigate,
 } from 'react-router-dom';
 import { LikeTrackerContext } from './Context/LikeTracker';
+import { DefaultUserContext } from './Context/DefaultUserContext';
 
 function App() {
 	const [likes, setLikes] = useState([]);
+	const [user, setUser] = useState({
+		username: 'tickle122',
+		name: 'Tom Tickle',
+		avatar_url:
+			'https://vignette.wikia.nocookie.net/mrmen/images/d/d6/Mr-Tickle-9a.png/revision/latest?cb=20180127221953',
+	});
 
 	return (
 		<div className='App'>
 			<LikeTrackerContext.Provider
 				value={{ likes, setLikes }}
 			>
-				<BrowserRouter>
-					<Navbar />
-					<Routes>
-						<Route path='/' element={<Home />} />
+				<DefaultUserContext.Provider
+					value={{ user, setUser }}
+				>
+					<BrowserRouter>
+						<Navbar />
+						<Routes>
+							<Route path='/' element={<Home />} />
 
-						<Route path='/reviews' element={<Reviews />} />
-						<Route
-							path='review/:review_id'
-							element={<Review />}
-						/>
+							<Route
+								path='/reviews'
+								element={<Reviews />}
+							/>
+							<Route
+								path='review/:review_id'
+								element={<Review />}
+							/>
 
-						<Route
-							path='/reviews/:category'
-							element={<Reviews />}
-						/>
-					</Routes>
-				</BrowserRouter>
+							<Route
+								path='/reviews/:category'
+								element={<Reviews />}
+							/>
+						</Routes>
+					</BrowserRouter>
+				</DefaultUserContext.Provider>
 			</LikeTrackerContext.Provider>
 		</div>
 	);
