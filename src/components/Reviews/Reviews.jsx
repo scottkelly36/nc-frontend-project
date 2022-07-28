@@ -70,7 +70,7 @@ const Reviews = () => {
 					<p>
 						{!selectedCategory
 							? ``
-							: `${[...allCategories].map((category) => {
+							: `${allCategories.map((category) => {
 									if (category.slug === selectedCategory) {
 										return `${category.description}`;
 									}

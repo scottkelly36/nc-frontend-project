@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Navbar.css';
-import Logo from '../../images/favicon-32x32.png';
+import Logo from '../../images/logo.png';
 import { DefaultUserContext } from '../../Context/DefaultUserContext';
 
 const Navbar = () => {
@@ -10,7 +10,7 @@ const Navbar = () => {
 	return (
 		<nav>
 			<div className='logo'>
-				<img src={Logo} alt='' />
+				<img src={Logo} alt='' className='logo-img' />
 			</div>
 			<div className='links'>
 				<NavLink
@@ -30,7 +30,9 @@ const Navbar = () => {
 					Reviews
 				</NavLink>
 				<div className='user-info'>
-					<p className='nav-link'>user : {user.username}</p>
+					<p className='nav-link'>
+						<i class='fa-solid fa-user'></i> {user.username}
+					</p>
 				</div>
 			</div>
 		</nav>
