@@ -3,7 +3,11 @@ import { useState, useContext } from 'react';
 import './PostComment.css';
 import { DefaultUserContext } from '../../Context/DefaultUserContext';
 
-const PostComment = ({ review_id }) => {
+const PostComment = ({
+	review_id,
+	allComments,
+	setAllComments,
+}) => {
 	const [error, setError] = useState();
 	const [isSubmitted, setIsSubmitted] = useState(false);
 	const [body, setBody] = useState('');
@@ -27,8 +31,10 @@ const PostComment = ({ review_id }) => {
 					}
 				)
 				.then((res) => {
-					//TODO: change to optimistically render the new comment
-					console.log(res);
+					setAllComments([
+						...allComments,
+						res.data.comment,
+					]);
 					setIsSubmitted(true);
 					removeMessage(setIsSubmitted);
 				})
