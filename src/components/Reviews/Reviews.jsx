@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import {
 	Fragment,
 	useState,
@@ -6,9 +5,6 @@ import {
 	useContext,
 } from 'react';
 
-=======
-import { Fragment, useState, useEffect, useContext } from 'react';
->>>>>>> 3444635e0fe7bd68deed59035ce5d453d2fb7642
 import {
 	Link,
 	useParams,
@@ -20,17 +16,11 @@ import Filter from '../Filter/Filter';
 import Loading from '../Loading/Loading';
 import DownVote from '../Buttons/DownVote';
 import UpVote from '../Buttons/UpVote';
-import {LikeTrackerContext} from '../../Context/LikeTracker.jsx'
-
-import DownVote from '../Buttons/DownVote';
-import UpVote from '../Buttons/UpVote';
 import { LikeTrackerContext } from '../../Context/LikeTracker.jsx';
 
 const Reviews = () => {
 	const { category } = useParams();
 	const navigate = useNavigate();
-	const {likes, setLikes} = useContext(LikeTrackerContext);
-
 	const { likes, setLikes } = useContext(
 		LikeTrackerContext
 	);
@@ -99,7 +89,6 @@ const Reviews = () => {
 									className='review-card-img'
 								/>
 								<div className='vote-btns'>
-<<<<<<< HEAD
 									{!likes.includes(review.review_id) ? (
 										<UpVote
 											review_id={review.review_id}
@@ -117,23 +106,6 @@ const Reviews = () => {
 											likes={likes}
 										/>
 									)}
-=======
-									{!likes.includes(review.review_id)?
-									<UpVote
-										review_id={review.review_id}
-										allReviews={allReviews}
-										setAllReviews={setAllReviews}
-										setLikes = {setLikes}
-										likes = {likes}
-									/> : 
-									<DownVote
-										review_id={review.review_id}
-										allReviews={allReviews}
-										setAllReviews={setAllReviews}
-										setLikes = {setLikes}
-										likes = {likes}
-									/>}
->>>>>>> 3444635e0fe7bd68deed59035ce5d453d2fb7642
 								</div>
 
 								<p className='total-votes'>
