@@ -1,3 +1,3 @@
 import { createContext } from 'react';
 
-export  const LikeTrackerContext = createContext();
+export const LikeTrackerContext = createContext();
