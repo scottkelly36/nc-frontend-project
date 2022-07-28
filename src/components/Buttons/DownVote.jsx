@@ -8,7 +8,7 @@ const DownVote = ({
 	setLikes,
 	likes,
 }) => {
-	const Down = () => {
+	const downVote = () => {
 		axios
 			.patch(
 				`https://scotts-game-app.herokuapp.com/api/reviews/${review_id}`,
@@ -42,7 +42,7 @@ const DownVote = ({
 	return (
 		<button
 			className='btn btn-danger'
-			onClick={() => Down()}
+			onClick={() => downVote()}
 		>
 			<svg
 				xmlns='http://www.w3.org/2000/svg'

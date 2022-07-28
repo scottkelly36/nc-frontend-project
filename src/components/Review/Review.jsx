@@ -9,7 +9,7 @@ import { useParams } from 'react-router-dom';
 import Loading from '../Loading/Loading.jsx';
 import axios from 'axios';
 import './Review.css';
-import PostComment from '../PostComment/PostComment.jsx';
+
 import DownVote from '../Buttons/DownVote';
 import UpVote from '../Buttons/UpVote';
 import { LikeTrackerContext } from '../../Context/LikeTracker.jsx';
@@ -87,11 +87,6 @@ const Review = () => {
 			</section>
 
 			<Comments
-				review_id={review_id}
-				setAllComments={setAllComments}
-				allComments={allComments}
-			/>
-			<PostComment
 				review_id={review_id}
 				setAllComments={setAllComments}
 				allComments={allComments}

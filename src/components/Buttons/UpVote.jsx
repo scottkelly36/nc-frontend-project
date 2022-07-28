@@ -8,7 +8,7 @@ const UpVote = ({
 	setLikes,
 	likes,
 }) => {
-	const Up = () => {
+	const upVote = () => {
 		axios
 			.patch(
 				`https://scotts-game-app.herokuapp.com/api/reviews/${review_id}`,
@@ -40,7 +40,7 @@ const UpVote = ({
 		<button
 			className='btn btn-feature'
 			onClick={() => {
-				Up();
+				upVote();
 			}}
 		>
 			<svg
