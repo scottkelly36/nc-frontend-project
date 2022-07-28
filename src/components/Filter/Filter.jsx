@@ -67,6 +67,10 @@ const Filter = ({
 			>
 				<option value='created_at'>Date</option>
 				<option value='votes'>Votes</option>
+				<option value='designer'>Designer</option>
+				<option value='owner'>Author</option>
+				<option value='title'>Title</option>
+				<option value='category'>Category</option>
 			</select>
 		</div>
 	);
