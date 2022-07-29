@@ -21,6 +21,7 @@
 	align-items: center;
 	justify-content: center;
 	text-align: center;
+	min-width: 20%;
 }
 .comment-card-main {
 	display: flex;
@@ -29,4 +30,15 @@
 	justify-content: center;
 	text-align: justify;
 	margin-left: 20px;
+	min-width: 70%;
+	max-width: 400px;
+}
+
+.comment-votes{
+	background-color: rgb(14, 126, 136);
+	border-radius: 10px;
+	padding: 4px 10px;
+	color: whitesmoke;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }

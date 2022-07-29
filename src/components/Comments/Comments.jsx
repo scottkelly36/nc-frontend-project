@@ -58,7 +58,7 @@ const Comments = ({
 									{comment.body}
 								</p>
 								<p className='comment-votes'>
-									{comment.votes}
+									Votes {comment.votes}
 								</p>
 								{comment.author === user.username ? (
 									<Delete

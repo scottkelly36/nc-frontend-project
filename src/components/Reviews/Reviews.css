@@ -23,6 +23,7 @@
 }
 .review-card {
 	width: 90%;
+	max-width: 600px;
 	display: flex;
 	margin-top: 30px;
 	background-color: #f2f3f4;
@@ -44,7 +45,7 @@
 }
 .card-details {
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-start;
 	margin: 10px 0;
 }
 .review-info {
@@ -60,6 +61,7 @@
 	align-items: center;
 	justify-content: center;
 	text-align: center;
+	margin-right: 10px;
 }
 .review-card-img {
 	width: 100%;

@@ -45,3 +45,7 @@
 .error {
 	color: rgb(228, 64, 65);
 }
+.post-button{
+	width: 100px;
+	font-size: 1.2rem;
+}

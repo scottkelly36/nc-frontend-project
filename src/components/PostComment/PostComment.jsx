@@ -89,7 +89,7 @@ const PostComment = ({
 					}}
 					placeholder='Type your comment here ... '
 				></textarea>
-				<button type='submit' className='btn btn-feature'>
+				<button type='submit' className='btn btn-feature post-button'>
 					Post Comment
 				</button>
 			</form>

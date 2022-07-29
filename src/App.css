@@ -14,6 +14,11 @@
 	color: white;
 	border: none;
 	border-radius: 2px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 60px;
+
 }
 .btn-feature {
 	background-color: rgb(14, 126, 136);
