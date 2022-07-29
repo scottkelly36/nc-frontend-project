@@ -17,6 +17,7 @@ import Loading from '../Loading/Loading';
 import DownVote from '../Buttons/DownVote';
 import UpVote from '../Buttons/UpVote';
 import { LikeTrackerContext } from '../../Context/LikeTracker.jsx';
+import Error from '../Errors/Error';
 
 const Reviews = () => {
 	const { category } = useParams();
@@ -30,6 +31,7 @@ const Reviews = () => {
 	const [selectedCategory, setCategory] =
 		useState(category);
 	const [allCategories, setAllCategories] = useState([]);
+	const [error, setError] =useState();
 
 	useEffect(() => {
 		axios
@@ -47,10 +49,16 @@ const Reviews = () => {
 					navigate(`/reviews/${selectedCategory}`);
 				}
 				setLoading(false);
+			}).catch((err)=>{
+				setError(err)
+				setLoading(false)
 			});
 	}, [selectedCategory, navigate]);
-
-	return isLoading ? (
+	
+	return error? 
+	<Error error={error}/> : 
+	
+	isLoading ? (
 		<Loading />
 	) : (
 		<Fragment>

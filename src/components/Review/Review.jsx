@@ -13,6 +13,8 @@ import './Review.css';
 import DownVote from '../Buttons/DownVote';
 import UpVote from '../Buttons/UpVote';
 import { LikeTrackerContext } from '../../Context/LikeTracker.jsx';
+import Error from '../Errors/Error';
+
 
 import Comments from '../Comments/Comments.jsx';
 
@@ -21,6 +23,7 @@ const Review = () => {
 	const [review, setReview] = useState({});
 	const [isLoading, setLoading] = useState(true);
 	const [allComments, setAllComments] = useState([]);
+	const [error, setError] =useState();
 
 	const { likes, setLikes } = useContext(
 		LikeTrackerContext
@@ -34,10 +37,15 @@ const Review = () => {
 			.then((res) => {
 				setReview(res.data.review);
 				setLoading(false);
-			});
+			}).catch((err)=>{
+				setError(err)
+				setLoading(false)
+			})
 	}, [review_id]);
 
-	return isLoading ? (
+	return( 
+	error? <Error error={error}/> :
+	isLoading ?( 
 		<Loading />
 	) : (
 		<Fragment>
@@ -90,8 +98,9 @@ const Review = () => {
 				review_id={review_id}
 				setAllComments={setAllComments}
 				allComments={allComments}
+				setError={setError}
 			/>
-		</Fragment>
+		</Fragment>)
 	);
 };
 
