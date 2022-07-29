@@ -46,7 +46,7 @@ const PostComment = ({
 					removeMessage(setIsSubmitted);
 				})
 				.catch((err) => {
-					setErrorMessage(err.response.data.msg);
+					setErrorMessage(err);
 					setIsLoading(false);
 				});
 		}
@@ -98,7 +98,7 @@ const PostComment = ({
 			</form>
 		</div>
 	) : (
-		<Error />
+		<Error error={errorMessage}/>
 	);
 };
 

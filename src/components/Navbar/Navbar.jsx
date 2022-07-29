@@ -31,7 +31,7 @@ const Navbar = () => {
 				</NavLink>
 				<div className='user-info'>
 					<p className='nav-link'>
-						<i class='fa-solid fa-user'></i> {user.username}
+						<i className='fa-solid fa-user'></i> {user.username}
 					</p>
 				</div>
 			</div>
