@@ -35,6 +35,12 @@ const Comments = ({
 		<Loading />
 	) : (
 		<Fragment>
+			<PostComment
+				review_id={review_id}
+				setAllComments={setAllComments}
+				allComments={allComments}
+				setIsLoading={setIsLoading}
+			/>
 			<section className='comments-container'>
 				{allComments.map((comment) => {
 					return (
@@ -66,12 +72,7 @@ const Comments = ({
 					);
 				})}
 			</section>
-			<PostComment
-				review_id={review_id}
-				setAllComments={setAllComments}
-				allComments={allComments}
-				setIsLoading={setIsLoading}
-			/>
+			
 		</Fragment>
 	);
 };
