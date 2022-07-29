@@ -32,7 +32,7 @@ const Delete = ({
 				setCheckSure(true);
 			}}
 		>
-			<i class='fa-solid fa-trash'></i> Delete
+			<i className='fa-solid fa-trash'></i> Delete
 		</button>
 	) : (
 		<Fragment>
