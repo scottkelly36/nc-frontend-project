@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, Fragment } from 'react';
 import axios from 'axios';
 
 const Delete = ({
@@ -35,6 +35,8 @@ const Delete = ({
 			<i class='fa-solid fa-trash'></i> Delete
 		</button>
 	) : (
+		<Fragment>
+			<p className="check">Are you sure?</p>
 		<div className='check-container'>
 			<button
 				className='btn btn-success'
@@ -53,6 +55,8 @@ const Delete = ({
 				<i class='fa-solid fa-x'></i> No
 			</button>
 		</div>
+		</Fragment>
+		
 	);
 };
 
