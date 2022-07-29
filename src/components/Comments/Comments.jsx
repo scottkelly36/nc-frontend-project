@@ -11,12 +11,14 @@ import PostComment from '../PostComment/PostComment.jsx';
 import Loading from '../Loading/Loading';
 import Delete from '../Buttons/Delete';
 import { DefaultUserContext } from '../../Context/DefaultUserContext';
+import Error from '../Errors/Error';
 
 const Comments = ({
 	review_id,
 	allComments,
 	setAllComments,
 }) => {
+	const [error, setError] = useState();
 	const [isLoading, setIsLoading] = useState(true);
 	const { user } = useContext(DefaultUserContext);
 
@@ -28,10 +30,12 @@ const Comments = ({
 			.then((res) => {
 				setAllComments(res.data.comments);
 				setIsLoading(false);
+			}).catch((err)=>{
+				setError(err)
 			});
 	}, [review_id, setAllComments]);
 
-	return isLoading ? (
+	return error? <Error error={error}/> : isLoading ? (
 		<Loading />
 	) : (
 		<Fragment>
