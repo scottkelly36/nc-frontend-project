@@ -9,6 +9,10 @@ nav {
 	width: 100vw;
 }
 
+.logo-img {
+	height: 50px;
+}
+
 .nav-link {
 	color: whitesmoke;
 	text-decoration: none;

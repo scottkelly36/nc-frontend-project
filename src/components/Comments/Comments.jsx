@@ -1,8 +1,16 @@
-import { useEffect, useState, Fragment } from 'react';
+import {
+	useEffect,
+	useState,
+	Fragment,
+	useContext,
+} from 'react';
+
 import './Comments.css';
 import axios from 'axios';
 import PostComment from '../PostComment/PostComment.jsx';
 import Loading from '../Loading/Loading';
+import Delete from '../Buttons/Delete';
+import { DefaultUserContext } from '../../Context/DefaultUserContext';
 
 const Comments = ({
 	review_id,
@@ -10,6 +18,7 @@ const Comments = ({
 	setAllComments,
 }) => {
 	const [isLoading, setIsLoading] = useState(true);
+	const { user } = useContext(DefaultUserContext);
 
 	useEffect(() => {
 		axios
@@ -26,6 +35,12 @@ const Comments = ({
 		<Loading />
 	) : (
 		<Fragment>
+			<PostComment
+				review_id={review_id}
+				setAllComments={setAllComments}
+				allComments={allComments}
+				setIsLoading={setIsLoading}
+			/>
 			<section className='comments-container'>
 				{allComments.map((comment) => {
 					return (
@@ -45,17 +60,19 @@ const Comments = ({
 								<p className='comment-votes'>
 									{comment.votes}
 								</p>
+								{comment.author === user.username ? (
+									<Delete
+										comment_id={comment.comment_id}
+										allComments={allComments}
+										setAllComments={setAllComments}
+									/>
+								) : null}
 							</div>
 						</article>
 					);
 				})}
 			</section>
-			<PostComment
-				review_id={review_id}
-				setAllComments={setAllComments}
-				allComments={allComments}
-				setIsLoading={setIsLoading}
-			/>
+			
 		</Fragment>
 	);
 };

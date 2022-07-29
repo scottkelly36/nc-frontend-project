@@ -17,9 +17,9 @@ const PostComment = ({
 	const submitComment = (event) => {
 		event.preventDefault();
 
-		if (body.length < 50) {
+		if (body.length > 200) {
 			setError(
-				'Your comment needs top at least 50 characters'
+				'Your comment needs to be less than 200 characters'
 			);
 			removeMessage(setError);
 		} else {
@@ -77,7 +77,7 @@ const PostComment = ({
 
 			<form className='post-form' onSubmit={submitComment}>
 				<p className='text-count'>
-					{body.length}/50 characters min
+					{body.length}/200 characters max
 				</p>
 				<textarea
 					className='textarea-post'
