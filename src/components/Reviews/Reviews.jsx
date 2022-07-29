@@ -31,7 +31,12 @@ const Reviews = () => {
 	const [selectedCategory, setCategory] =
 		useState(category);
 	const [allCategories, setAllCategories] = useState([]);
+
 	const [error, setError] =useState();
+
+	const [order, setOrder] = useState('ASC');
+	const [sort, setSort] = useState('created_at');
+
 
 	useEffect(() => {
 		axios
@@ -40,6 +45,8 @@ const Reviews = () => {
 				{
 					params: {
 						category: selectedCategory,
+						order: order,
+						sort_by: sort,
 					},
 				}
 			)
@@ -53,7 +60,7 @@ const Reviews = () => {
 				setError(err)
 				setLoading(false)
 			});
-	}, [selectedCategory, navigate]);
+	}, [selectedCategory, navigate, order, sort]);
 	
 	return error? 
 	<Error error={error}/> : 
@@ -66,6 +73,8 @@ const Reviews = () => {
 				setCategory={setCategory}
 				setAllCategories={setAllCategories}
 				allCategories={allCategories}
+				setOrder={setOrder}
+				setSort={setSort}
 			/>
 			<header className='home-header'>
 				<h1 className='review-header'>Reviews</h1>
