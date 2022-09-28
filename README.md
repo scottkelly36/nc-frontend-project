@@ -1,22 +1,27 @@
-##deployed site
-https://netlify-thinks-scottkelly36-is-great.netlify.app/reviews
+# NC GAMES
 
-nc games is a site to review board games so others can share their experiences. you're able to comment on reviews and delete comments if you change your mind. your able to sort reviews by a number of different ways to find what you care about most.
+## deployed site
 
-##backend deployment
+    https://netlify-thinks-scottkelly36-is-great.netlify.app
 
-https://scotts-game-app.herokuapp.com/api
+## About NC GAMES
 
-##minimum node version
+    NC GAMES is a site to review board games so others can share their experiences. You're able to comment on reviews and delete comments if you change your mind. You can also sort reviews by a number of different ways to find what you care about most.
 
-v18.0.0
+## Backend deployment
 
-##how to run
+    https://scotts-game-app.herokuapp.com/api
 
-git clone https://github.com/scottkelly36/nc-frontend-project
+## minimum node version
 
-once cloned
-cd nc-frontend-project
-run npm i
+    v18.0.0
 
-to run locally run npm start
+## How to run
+
+    git clone https://github.com/scottkelly36/nc-frontend-project
+
+    once cloned
+    cd nc-frontend-project
+    run npm i
+
+    to run locally run npm start
